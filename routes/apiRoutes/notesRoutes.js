@@ -1,5 +1,6 @@
 const path = require('path');
 const app = express();
+const router = require("express").Router();
 const {v4 : uuidv4} = require('uuid')
 
 const id = uuidv4();
@@ -17,3 +18,5 @@ app.post('/api/notes',(req,res)=>{
     
     res.send();
 });
+
+moudule.exports = router;
