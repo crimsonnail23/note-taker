@@ -29,7 +29,10 @@ app.get('/api/notes', (req,res)=>{
 })
 //following code posts new data into the db.json and hopefully adds a unique ID.
 app.post('/api/notes',(req,res)=>{
+    const noteTitle = req.body.title;
+    const noteText = req.body.text;
     
+    res.send();
 })
 
 app.listen(PORT, ()=>{
