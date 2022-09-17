@@ -1,5 +1,4 @@
 const path = require('path');
-const app = express();
 const router = require("express").Router();
 const {v4 : uuidv4} = require('uuid')
 
@@ -23,4 +22,4 @@ router.post('/notes',(req,res)=>{
     //res.send(noteTitle, noteText);
 });
 
-moudule.exports = router;
+module.exports = router;
