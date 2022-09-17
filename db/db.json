@@ -1,7 +1,1 @@
-[
-    {
-        "title":"Test Title",
-        "text":"Test text",
-        "id":"unique id"
-    }
-]
+[{"title":"Test Title","text":"Test text","id":"unique id"},{"title":"grocery list","text":"food","id":"b1cc9a05-dc76-4c0a-ab69-c3e3a0603a2d"},{"title":"games list","text":"baoynetta 3","id":"056ac12b-89ba-4ed2-b644-e6ede110e6ca"}]

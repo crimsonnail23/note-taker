@@ -1,33 +1,40 @@
 const path = require('path');
 const router = require("express").Router();
 const {v4 : uuidv4} = require('uuid')
-const id = uuidv4();
-const{
-    getNotes,
-    saveNote,
-    handleNoteSave,
-    getAndRenderNotes,
-    renderActiveNote
-}=require('../../public/assets/js/index.js')
+const fs =require('fs');
+const util=require('util');
+const readFile = util.promisify(fs.readFile);
+const writeFile =util.promisify(fs.writeFile);
+function getNotes(){
+    return readFile('db/db.json','utf-8').then(rawNotes=>{
+        return JSON.parse(rawNotes)
+    })
+}
 
 router.get('/notes', (req,res)=>{
-    res.header("Content-Type", 'application/json')
-    res.sendFile(path.join(__dirname,'../../db/db.json'));
+    getNotes().then(notesArray=>res.json(notesArray))
 });
 
 
 //following code posts new data into the html and then to db.json and hopefully adds a unique ID.
 router.post('/notes',(req,res)=>{
-    const noteTitle = req.body.title;
-    const noteText = req.body.text;
+    getNotes().then(oldArray=>{ 
+        console.log(oldArray) 
     
-    req.body.id = id
+        var noteObject = {title:req.body.title, text: req.body.text, id: uuidv4()}
+        var newArray = [...oldArray, noteObject];
+        writeFile('db/db.json',JSON.stringify(newArray)).then(()=>res.json({ message: 'okay' }))
+    })
 
-    console.log(noteTitle, noteText, req.body.id)
 
-    //use document.querySelecter().value and red.body together to create the new data???
+    // console.log(noteTitle, noteText, req.body.id)
+
+    //res.json(saveNote(req.body));
     
-    res.json({noteTitle, noteText, id});
+
 });
+
+//router.delete ( use filter to look over array, make new array with all of arrays that don't match, run writeFile again
+//with shortened array. send res.json(okay) when done)
 
 module.exports = router;
