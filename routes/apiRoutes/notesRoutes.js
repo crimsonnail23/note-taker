@@ -5,12 +5,15 @@ const fs =require('fs');
 const util=require('util');
 const readFile = util.promisify(fs.readFile);
 const writeFile =util.promisify(fs.writeFile);
+
+//following code reads data from json files, parses it to string data.
 function getNotes(){
     return readFile('db/db.json','utf-8').then(rawNotes=>{
         return JSON.parse(rawNotes)
     })
 }
 
+//following code uses getNotes function, and then displays the data.
 router.get('/notes', (req,res)=>{
     getNotes().then(notesArray=>res.json(notesArray))
 });
@@ -34,7 +37,14 @@ router.post('/notes',(req,res)=>{
 
 });
 
-//router.delete ( use filter to look over array, make new array with all of arrays that don't match, run writeFile again
-//with shortened array. send res.json(okay) when done)
+
+//following code doens't meet MVP.
+// router.delete ( use filter to look over array, make new array with all of arrays that don't match, run writeFile again
+// with shortened array. send res.json(okay) when done)
+
+router.delete('/notes',(req,res)=>{
+    deleteArray=[];
+    deleteArray.push(getNotes().filter())
+})
 
 module.exports = router;
