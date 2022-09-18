@@ -22,7 +22,7 @@ router.get('/notes', (req,res)=>{
 //following code posts new data into the html and then to db.json and hopefully adds a unique ID.
 router.post('/notes',(req,res)=>{
     getNotes().then(oldArray=>{ 
-        console.log(oldArray) 
+         
     
         var noteObject = {title:req.body.title, text: req.body.text, id: uuidv4()}
         var newArray = [...oldArray, noteObject];
@@ -38,16 +38,17 @@ router.post('/notes',(req,res)=>{
 });
 
 
-//following code doens't meet MVP.
+//following code doens't meet MVP and creates a bug.
 // router.delete ( use filter to look over array, make new array with all of arrays that don't match, run writeFile again
 // with shortened array. send res.json(okay) when done)
-
-router.delete('/notes',(req,res)=>{
-    deleteArray=[];
-    getNotes().then(oldArray=>{ 
-        oldArray.push(oldArray).filter(oldArray!==oldArray).push(deleteArray);
-        writeFile('db/db.json', JSON.stringify(deleteArray)).then(()=>res.json({ message: 'delete succesful' }))
-    })
-});
+//
+// router.delete('/notes/:id',(req,res)=>{
+//     deleteArray=[];
+//     getNotes().then(oldArray=>{ 
+//         console.log(oldArray)
+//         oldArray.push(oldArray).filter(oldArray!==oldArray).push(deleteArray);
+//         writeFile('db/db.json', JSON.stringify(deleteArray)).then(()=>res.json({ message: 'delete succesful' }))
+//     });
+// });
 
 module.exports = router;
