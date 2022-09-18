@@ -44,7 +44,10 @@ router.post('/notes',(req,res)=>{
 
 router.delete('/notes',(req,res)=>{
     deleteArray=[];
-    deleteArray.push(getNotes().filter())
-})
+    getNotes().then(oldArray=>{ 
+        oldArray.push(oldArray).filter(oldArray!==oldArray).push(deleteArray);
+        writeFile('db/db.json', JSON.stringify(deleteArray)).then(()=>res.json({ message: 'delete succesful' }))
+    })
+});
 
 module.exports = router;
