@@ -12,6 +12,10 @@ deplyoed application:
 
 https://youn-note-taker.herokuapp.com/
 
+GitHub repo:
+
+https://github.com/crimsonnail23/note-taker
+
 # screenshots.
 
 ![first screenshot](/screenshots/note-taker-screenshot-01.jpg?raw=true)
