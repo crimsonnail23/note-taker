@@ -15,4 +15,4 @@ https://youn-note-taker.herokuapp.com/
 # screenshots.
 
 ![first screenshot](/screenshots/note-taker-screenshot-01.jpg?raw=true)
-![second screenshot]((/screenshots/note-taker-screenshot-02.jpg?raw=true))
+![second screenshot](/screenshots/note-taker-screenshot-02.jpg?raw=true)
